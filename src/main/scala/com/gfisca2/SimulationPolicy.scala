@@ -7,16 +7,19 @@ import java.util.Calendar
 import com.typesafe.config.{Config, ConfigFactory}
 import org.cloudbus.cloudsim.core.CloudSim
 import org.cloudbus.cloudsim.provisioners.{BwProvisionerSimple, PeProvisionerSimple, RamProvisionerSimple}
-import org.cloudbus.cloudsim.{Cloudlet, CloudletSchedulerSpaceShared, Datacenter, DatacenterCharacteristics, Host, Log, NetworkTopology, Pe, Storage, UtilizationModelFull, Vm, VmAllocationPolicySimple, VmSchedulerTimeShared}
+import org.cloudbus.cloudsim.{Cloudlet, CloudletSchedulerSpaceShared, Datacenter, DatacenterCharacteristics, Host, NetworkTopology, Pe, Storage, UtilizationModelFull, Vm, VmAllocationPolicySimple, VmSchedulerTimeShared}
 import org.slf4j.{Logger, LoggerFactory}
 
-import scala.jdk.javaapi.CollectionConverters.asJava
+import scala.jdk.javaapi.CollectionConverters._
 import scala.collection.mutable.ListBuffer
 
 /**
  * An example showing the creation of 2 datacenters with both map/reduce and general cloudlets running on them.
+ * This simulation is executed applying the defined scheduling policy.
+ *
+ * @author Giorgia Fiscaletti
  */
-object Example1 {
+object SimulationPolicy {
 
   /**
    * The cloudlet list.
@@ -31,10 +34,13 @@ object Example1 {
    */
   val LOG: Logger = LoggerFactory.getLogger(getClass)
   /**
+   * Config file name.
+   */
+  val confName : String = "withPolicy.conf"
+  /**
    * Initialization of the parameter to load the configuration.
    */
-  val conf: Config = ConfigFactory.load()
-
+  val conf: Config = ConfigFactory.load(confName)
   /**
    * Creates main() to run this example.
    *
@@ -229,16 +235,23 @@ object Example1 {
 
   def createMasterNode(id: Int): MasterNode = {
     // Creates the Master Node.
-    val broker: MasterNode = try {
-      new MasterNode("Broker_"+id)
+    val masterNode: MasterNode = try {
+      new MasterNode("MasterNode_"+id, confName)
     } catch {
       case e: Exception =>
         e.printStackTrace()
         return null
     }
 
-    broker
+    masterNode
 
+  }
+
+  def getOverallCost(cloudletList : util.List[NewCloudlet]) : Double = {
+    val costList : ListBuffer[Double] = ListBuffer[Double]()
+    asScala(cloudletList).foreach(cloudlet => costList += cloudlet.getCloudletCost)
+    costList.toList
+    costList.sum
   }
 
   /**
@@ -250,24 +263,46 @@ object Example1 {
 
     val indent = "    "
 
-    Log.printLine()
-    Log.printLine("========== OUTPUT ==========")
-    Log.printLine("Cloudlet ID" + indent + "Type" + indent + indent + "STATUS" + indent + "Data center ID" + indent + "VM ID" + indent + "Time" + indent + "Start Time" + indent + "Finish Time")
+    LOG.info("\n")
+    LOG.info("========== OUTPUT ==========")
+    LOG.info("Cloudlet ID" + indent + "Type" + indent + indent + "STATUS" + indent + "Data center ID" + indent + "VM ID" + indent + "Time" + indent + "Start Time" + indent + "Finish Time" + indent + "Cloudlet cost")
     val dft = new DecimalFormat("###.##")
 
     list.forEach{cloudlet =>
-      Log.print(indent + cloudlet.getCloudletFullId + indent + indent + cloudlet.getCloudletType + indent + indent)
-      if(cloudlet.getCloudletStatus == Cloudlet.SUCCESS){
-        Log.print("SUCCESS")
-        Log.print(indent + indent + cloudlet.getResourceId
-          + indent + indent + indent + cloudlet.getVmId
-          + indent + indent + dft.format(cloudlet.getActualCPUTime)
-          + indent + indent + dft.format(cloudlet.getExecStartTime)
-          + indent + indent + dft.format(cloudlet.getFinishTime))
+      if(cloudlet.getCloudletStatus == Cloudlet.SUCCESS) {
+        if(cloudlet.getCloudletType == NewCloudlet.Type.REDUCER)
+          LOG.info(indent + cloudlet.getCloudletFullId
+            + indent + indent + cloudlet.getCloudletType
+            + indent + indent + "SUCCESS"
+            + indent + indent + cloudlet.getResourceId
+            + indent + indent + indent + cloudlet.getVmId
+            + indent + indent + dft.format(cloudlet.getActualCPUTime)
+            + indent + indent + dft.format(cloudlet.getExecStartTime)
+            + indent + indent + dft.format(cloudlet.getFinishTime)
+            + indent + indent + dft.format(cloudlet.getCloudletCost)
+            + indent + indent + "Reducing results of mappers:" + cloudlet.getAssociatedMappers
+          )
+        else {
+          LOG.info(indent + cloudlet.getCloudletFullId
+            + indent + indent + cloudlet.getCloudletType
+            + indent + indent + "SUCCESS"
+            + indent + indent + cloudlet.getResourceId
+            + indent + indent + indent + cloudlet.getVmId
+            + indent + indent + dft.format(cloudlet.getActualCPUTime)
+            + indent + indent + dft.format(cloudlet.getExecStartTime)
+            + indent + indent + dft.format(cloudlet.getFinishTime)
+            + indent + indent + dft.format(cloudlet.getCloudletCost)
+          )
+        }
+      } else {
+        LOG.info(indent + cloudlet.getCloudletFullId
+          + indent + indent + cloudlet.getCloudletType
+          + indent + indent + "FAILED")
       }
-      if(cloudlet.getCloudletType == NewCloudlet.Type.REDUCER) Log.print(indent + indent + "Reducing results of mappers:" + cloudlet.getAssociatedMappers)
-      Log.print("\n")
     }
+
+    val overallCost = getOverallCost(list)
+    LOG.info("OVERALL COST: " + overallCost)
 
   }
 

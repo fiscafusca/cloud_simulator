@@ -50,7 +50,7 @@ public class MasterNode extends DatacenterBroker {
     /**
      * Initialization of the parameter to load the configuration.
      */
-    private Config conf = ConfigFactory.load();
+    private Config conf;
 
     /**
      * Created a new MasterNode object.
@@ -61,11 +61,12 @@ public class MasterNode extends DatacenterBroker {
      * @pre name != null
      * @post $none
      */
-    public MasterNode(String name) throws Exception {
+    public MasterNode(String name, String configName) throws Exception {
         super(name);
         setReducerList(new ArrayList<>());
         setCloudletList(new ArrayList<>());
         associatedMappers = new ArrayList<>();
+        conf = ConfigFactory.load(configName);
     }
 
     /**
@@ -103,6 +104,8 @@ public class MasterNode extends DatacenterBroker {
                 if(ev.getData().getClass() == NewCloudlet.class) {
 
                     NewCloudlet cloudlet = (NewCloudlet) ev.getData();
+                    double cloudletCost = cloudlet.getActualCPUTime()*conf.getDouble("datacenter.peCostPerSec");
+                    cloudlet.setCloudletCost(cloudletCost);
 
                     if (cloudlet.getCloudletType() == NewCloudlet.Type.MAPPER) {
 

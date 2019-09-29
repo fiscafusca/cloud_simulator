@@ -10,5 +10,6 @@ libraryDependencies += "com.typesafe" % "config" % "1.3.4"
 libraryDependencies += "com.hazelcast" % "hazelcast" % "3.3.3"
 libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.8"
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.8" % "test"
+libraryDependencies += "junit" % "junit" % "4.13-beta-1"
 
 logBuffered in Test := false

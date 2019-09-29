@@ -45,6 +45,11 @@ public class NewCloudlet extends Cloudlet {
     private Type cloudletType;
 
     /**
+     * The cost of the cloudlet.
+     */
+    private Double cloudletCost;
+
+    /**
      * Allocates a new NewCloudlet object. The NewCloudlet length, input and output file sizes should be
      * greater than or equal to 1. By default this constructor sets the history of this object.
      *
@@ -79,7 +84,9 @@ public class NewCloudlet extends Cloudlet {
         super(cloudletId, cloudletLength, pesNumber, cloudletFileSize, cloudletOutputSize, utilizationModelCpu, utilizationModelRam, utilizationModelBw);
         setCloudletType(type);
         associatedMappers = new ArrayList<>();
-        associatedVm = null;
+        //setAssociatedMappers(new ArrayList<>());
+        setAssociatedVm(null);
+        setCloudletCost(0.0);
     }
 
     /**
@@ -179,6 +186,22 @@ public class NewCloudlet extends Cloudlet {
             default:
                 return "G_" + getCloudletId();
         }
+    }
+
+    /**
+     * Gets the cloudlet cost.
+     * @return the cloudlet cost
+     */
+    public Double getCloudletCost() {
+        return cloudletCost;
+    }
+
+    /**
+     * Sets the cloudlet cost.
+     * @param cloudletCost = the cloudlet cost
+     */
+    public void setCloudletCost(Double cloudletCost) {
+        this.cloudletCost = cloudletCost;
     }
 
 }
