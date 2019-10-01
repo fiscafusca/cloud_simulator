@@ -162,7 +162,8 @@ The configurations share all the parameters related to Datacenters, Hosts, VMs a
 
       - mapreduce = 2, the number of mappers associated to each reducer (e.g. in this case each reducer is dynamically allocated every 2 mappers)
       - sched_policy = true if the scheduling policy is enabled, false otherwise
-      
+
+
  ## Implementation of the map/reduce task
  
  As mentioned above, the framework has been extended in order to enable the execution of map/reduce tasks. First off, an extension of the Cloudlet class (NewCloudlet) has been implemented, in order to distinguish between different types of cloudlets (mappers, reducers, and general; the last one represents any other task). Then, the DatacenterBroker class was extended to obtain the MasterNode class. The override of its processEvent(simEvent ev) method distinguishes between the different types of cloudlets and performs different actions in response to the CLOUDLET_RETURN event. If the returned cloudlet is of type GENERAL (i.e. any other cloudlet that is not a mapper), the CLOUDLET_RETURN event is processed as in the default implementation of the DatacenterBroker. If the cloudlet is a MAPPER instead, the MasterNode starts instantiates the counter of the returned mappers. Whenever the counter arrives to a certain value specified in the configuration file as "mapreduce" (2 in our case), the MasterNode generates a reduce task that takes the output of the completed mappers as input. In other words, a new reducer is generated as soon as n mappers have terminated. Once the reducer is submitted, the counter is cleared and instantiated again as soon as the next mapper returns a result. If the number of mappers left in the list is less than the number of mappers that provide the input to a reducer, a reducer will be generated to handle the remaining mappers (i.e. if the number of mappers % mapreduce value != 0).  
