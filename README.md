@@ -1,5 +1,5 @@
 # CS441 - Engineering of Distributed Objects for Cloud Computing: homework 1
-### Giorgia Fiscaletti, UIN: 669755907
+## Giorgia Fiscaletti, UIN: 669755907
 
 ##Introduction
 The purpose of this homework was to build a cloud simulator based on the CloudSim framework, in order to evaluate the execution of application in custom cloud datacenters. The original framework was extended to provide further functionalities, such as a new scheduling policy based on CPU cores and the support for map/reduce tasks.
