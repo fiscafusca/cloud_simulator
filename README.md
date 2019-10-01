@@ -42,13 +42,16 @@ The project has been developed both in Scala and Java. The simulations and the t
 #### Simulations
 
 The simulations provided are:
+
 - SimulationPolicy: simulation with the implemented allocation policy considering the impact of communication between cores in multi-cores CPUs  
 - SimulationNoPolicy: simulation without the implemented allocation policy
 
 #### Tests
 
 The test files provided are:
+
 - TestSimulationPolicy: a file to test the SimulationPolicy object, with tests for the following methods:
+  
   - createCloudlet(): to check if the number of the created cloudlets in the container is correct and if the number of users is correctly associated to each cloudlet;
   - createVM(): to check if the number of the created VMs in the container is correct and if the number of users is correctly associated to each cloudlet;
   - createDatacenter(): to check if the Datacenter object is correctly instantiated and if the number of hosts is correct;
@@ -59,6 +62,7 @@ The test files provided are:
 #### Extended classes
 
 The following are the classes extended from the CloudSim framework:
+
 - MasterNode: extends the DatacenterBroker class, providing further functionalities such as the simulation of the map/reduce task with dynamic allocation of reducers, and the scheduling policy based on CPU cores;
 - NewCloudlet: extends the Cloudlet class, providing the distinction between different kinds of cloudlets (MAPPER, REDUCER and GENERAL)
 
@@ -70,6 +74,7 @@ The configurations share all the parameters related to Datacenters, Hosts, VMs a
 ## Parameters
 
 - Main: contains the parameters used in the main method of the simulation.
+
   - num_user = 2, the number of users
   - trace_flag = false, boolean to trace events
   - bw_0 = 10.0, the bandwidth set for the first datacenter
@@ -79,27 +84,35 @@ The configurations share all the parameters related to Datacenters, Hosts, VMs a
   - idShift = 0, base ID to increase for ID assignment
   - cloudlet_types = 2, the distinct types of cloudlets (mapper/reducer/general)
   - vm_types = 2, the distinct types of VMs (CPU, memory, etc.)
+  
 - Cloudlet_0: contains the parameters for the first type of cloudlet (mapper).
+
   - length = 20000, millions of instructions executed
   - fileSize = 300, input size
   - outputSize = 300, output size
   - pesNumber = 1, number of processing elements required
   - count = 10, the number of cloudlet to generate
   - type = 0, integer representing the cloudlet type (mapper in this case)
+  
 - Cloudlet_1: contains the parameters for the second type of cloudlet (general).
+
   - length = 40000, millions of instructions executed
   - fileSize = 300, input size
   - outputSize = 300, output size
   - pesNumber = 2, number of processing elements required
   - count = 5, the number of cloudlet to generate
   - type = 2, integer representing the cloudlet type (general in this case)
+  
 - Cloudlet_2: contains the parameters for the third type of cloudlet (reducer). Note that in this case the parameter "count" is not needed, since we are going to generate the cloudlets at runtime depending on the number of submitted mappers.
+  
   - length = 20000, millions of instructions executed
   - fileSize = 600, input size (sum of the output of 2 mappers, since in the given configuration each reducer takes the results of 2 mappers)
   - outputSize = 600, output size
   - pesNumber = 1, number of processing elements required
   - type = 0, integer representing the cloudlet type (reducer in this case)
+
 - vm_0: contains the parameters for the first type of VM.
+  
   - idShift = 0, base ID to increase for ID assignment
   - size = 524288, storage size allocated for the VM
   - ram = 32768, RAM allocated for the VM
@@ -108,7 +121,9 @@ The configurations share all the parameters related to Datacenters, Hosts, VMs a
   - pesNumber = 2, number of PEs assigned to the VM
   - vmm = "Xen", VMM name
   - count = 5, number of VM to create
+
 - vm_1: contains the parameters for the second type of VM.
+
   - idShift = 100, base ID to increase for ID assignment
   - size = 524288, storage size allocated for the VM
   - ram = 32768, RAM allocated for the VM
@@ -117,7 +132,9 @@ The configurations share all the parameters related to Datacenters, Hosts, VMs a
   - pesNumber = 1, number of PEs assigned to the VM
   - vmm = "Xen", VMM name
   - count = 5, number of VM to create
+
 - Datacenter: contains the parameters for the datacenter.
+
   - mips_0 = 5000, MIPS of the first host
   - mips_1 = 5000, MIPS of the second host
   - host_types = 2, number of distinct host types
@@ -140,6 +157,8 @@ The configurations share all the parameters related to Datacenters, Hosts, VMs a
   - costPerStorage = 0.1, storage cost
   - costPerBw = 0.1, bandwidth cost
   - peCostPerSec = 0.03, cost per second
+
 - Masternode: contains the parameters needed in the MasterNode class implementation.
+
   - mapreduce = 2, the number of mappers associated to each reducer (e.g. in this case each reducer is dynamically allocated every 2 mappers)
   - sched_policy = true if the scheduling policy is enabled, false otherwise
