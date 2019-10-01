@@ -66,12 +66,12 @@ The following are the classes extended from the CloudSim framework:
 - MasterNode: extends the DatacenterBroker class, providing further functionalities such as the simulation of the map/reduce task with dynamic allocation of reducers, and the scheduling policy based on CPU cores;
 - NewCloudlet: extends the Cloudlet class, providing the distinction between different kinds of cloudlets (MAPPER, REDUCER and GENERAL)
 
-## Configuration files
+### Configuration files
 
 The two configuration files are withPolicy.conf and noPolicy.conf, respectively used in SimulationPolicy.scala and SimulationNoPolicy.scala.
 The configurations share all the parameters related to Datacenters, Hosts, VMs and Cloudlets. The only parameter that differs between the two configuration is a boolean value that is set to true in the first one to enable the scheduling policy, and fals ein the second one to disable it.
 
-## Parameters
+### Parameters
 
 - Main: contains the parameters used in the main method of the simulation.
 
