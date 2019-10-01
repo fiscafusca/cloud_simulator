@@ -1,12 +1,15 @@
 # CS441 - Engineering of Distributed Objects for Cloud Computing: homework 1
-## Giorgia Fiscaletti, UIN: 669755907
+### Giorgia Fiscaletti, UIN: 669755907
 
-##Introduction
+## Introduction
+
 The purpose of this homework was to build a cloud simulator based on the CloudSim framework, in order to evaluate the execution of application in custom cloud datacenters. The original framework was extended to provide further functionalities, such as a new scheduling policy based on CPU cores and the support for map/reduce tasks.
 The project is developed in Scala and can be compiled using SBT. The CloudSim classes that needed further features were extended in Java.
 
-##Instructions
-##IntelliJ IDEA
+## Instructions
+
+### IntelliJ IDEA
+
 - Open IntelliJ IDEA and select "Check out from Version Control" in the welcome screen
 - Select "Git"
 - Enter the repository URL (below) and click on "Clone"
@@ -16,7 +19,8 @@ https://giorgiafiscaletti2@bitbucket.org/giorgiafiscaletti2/giorgia_fiscaletti_h
 - Import the sbt project (a log window will appear on the bottom right of the screen) keeping the default settings
 - Go in /Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2 and select the simulation to run
 
-##SBT CLI
+### SBT CLI
+
 - Open a terminal and type:
 ```
 git clone https://giorgiafiscaletti2@bitbucket.org/giorgiafiscaletti2/giorgia_fiscaletti_hw1.git
@@ -29,15 +33,20 @@ sbt clean compile test
 ```
 sbt clean compile run
 ```
-##Project Structure
+## Project Structure
+
 The project has been developed both in Scala and Java. The simulations and the tests have been written in Scala, while the extensions of the CloudSim classes are written in Java. A configuration file is provided for each simulation.
-##Scala
-##Simulations
+
+### Scala
+
+#### Simulations
+
 The simulations provided are:
 - SimulationPolicy: simulation with the implemented allocation policy considering the impact of communication between cores in multi-cores CPUs  
 - SimulationNoPolicy: simulation without the implemented allocation policy
 
-##Tests
+#### Tests
+
 The test files provided are:
 - TestSimulationPolicy: a file to test the SimulationPolicy object, with tests for the following methods:
   - createCloudlet(): to check if the number of the created cloudlets in the container is correct and if the number of users is correctly associated to each cloudlet;
@@ -45,16 +54,21 @@ The test files provided are:
   - createDatacenter(): to check if the Datacenter object is correctly instantiated and if the number of hosts is correct;
   - createMasterNode(): to check if the MasterNode object is correctly instantiated;
   
-##Java
-##Extended classes
+### Java
+
+#### Extended classes
+
 The following are the classes extended from the CloudSim framework:
 - MasterNode: extends the DatacenterBroker class, providing further functionalities such as the simulation of the map/reduce task with dynamic allocation of reducers, and the scheduling policy based on CPU cores;
 - NewCloudlet: extends the Cloudlet class, providing the distinction between different kinds of cloudlets (MAPPER, REDUCER and GENERAL)
 
-##Configuration files
+## Configuration files
+
 The two configuration files are withPolicy.conf and noPolicy.conf, respectively used in SimulationPolicy.scala and SimulationNoPolicy.scala.
 The configurations share all the parameters related to Datacenters, Hosts, VMs and Cloudlets. The only parameter that differs between the two configuration is a boolean value that is set to true in the first one to enable the scheduling policy, and fals ein the second one to disable it.
-##Parameters
+
+## Parameters
+
 - Main: contains the parameters used in the main method of the simulation.
   - num_user = 2, the number of users
   - trace_flag = false, boolean to trace events
