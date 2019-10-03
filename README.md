@@ -196,19 +196,19 @@ The results of the simulations are contained in the .csv files contained in the 
 
 - If you do not have Jupyter installed, open a terminal and type:
 
-  - if you are on Linux:
+   - if you are on Linux:
   
 ```
 sudo apt-get install jupyter
 ```
   
-  - if you are on macOS:
+   - if you are on macOS:
 
 ```
 brew install jupyter
 ```
   
-  - if you are on Windows, you need to download and install Anaconda.
+   - if you are on Windows, you need to download and install Anaconda.
   
 - Open a terminal (or Anaconda prompt for Windows) in the project root folder and type:
 
