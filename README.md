@@ -189,4 +189,47 @@ The fourth case represents the limitation of the implemented policy. If we have 
 
 ## Results
 
+The results of the simulations are contained in the .csv files contained in the csv folder. They can be visualized by running the Python notebook Simulations_results.ipynb. To do so, follow these steps:
+
+- If you do not have Jupyter installed, open a terminal and type:
+
+  - if you are on Linux:
+  
+  ```
+  sudo apt-get install jupyter
+  ```
+  
+  - if you are on macOS:
+  
+  ```
+  brew install jupyter
+  ```
+  
+  - if you are on Windows, you need to download and install Anaconda.
+  
+- Open a terminal (or Anaconda prompt for Windows) in the project root folder and type:
+
+```
+jupyter notebook
+```
+
+- A browser page will be opened, showing the content of the project root directory. Click on Simulations_results.ipynb
+
+- You will be redirected to the notebook file. If the content is not visualized correctly, click on the Kernel tab and select "Restart & Run All"
+
+As already stated in the Evaluation section, the simulations related to the first 3 configurations show a clear improvement of the results when the custom scheduling policy is enabled:
+
+1. -13.51% execution time, -0.77% cost
+2. -19.70% execution time, -0.46% cost
+3. -20.06% execution time, -0.71% cost
+ 
+In the last case, we have a slight improvement of overall cost but the execution time is lower when the policy is disabled. The cost reduction is not significant with respect to the slowdown in execution time:
+
+- +15.10% execution time, -1.05% cost
+
+## Conclusions and future works
+
+From the results obtained by running the different simulations we can say that the implemented scheduling policy is convenient in most of the configurations, as it allows to reduce both the overall processing cost and execution time. Future works could involve the extension of the policy to more than 2 types of cores (i.e. adding further multi-core CPUs), and finding a sound alternative to avoid the significant loss in execution time in the fourth presented case when the policy is enabled. 
+
+
 

@@ -321,17 +321,23 @@ object SimulationPolicy {
 
   }
 
+  /**
+   * Selects the configuration chosen by the user
+   *
+   * @param input index chosen by the user
+   * @return the file name
+   */
   def chooseFile(input : Double): String = {
 
     input match {
       case 1.0 => "withPolicy1.conf"
       case 1.1 => "noPolicy1.conf"
       case 2.0 => "withPolicy2.conf"
-      case 2.1 => "noPolicy1.conf"
+      case 2.1 => "noPolicy2.conf"
       case 3.0 => "withPolicy3.conf"
-      case 3.1 => "noPolicy1.conf"
+      case 3.1 => "noPolicy3.conf"
       case 4.0 => "withPolicy4.conf"
-      case 4.1 => "noPolicy1.conf"
+      case 4.1 => "noPolicy4.conf"
     }
 
   }
