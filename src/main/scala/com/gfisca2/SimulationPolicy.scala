@@ -120,9 +120,9 @@ object SimulationPolicy {
     }
   }
 
-  def createCloudlet(userId: Int, idShift: Int, conf: Config): List[Cloudlet] = { // Creates a container to store Cloudlets
+  def createCloudlet(userId: Int, idShift: Int, conf: Config): List[NewCloudlet] = { // Creates a container to store Cloudlets
     // Creates a container to store the desired Cloudlets
-    val list = ListBuffer[Cloudlet]()
+    val list = ListBuffer[NewCloudlet]()
     val utilizationModel = new UtilizationModelFull
 
     // For each distinct cloudlet type defined in the configuration file...
