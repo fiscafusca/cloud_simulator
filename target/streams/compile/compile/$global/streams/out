@@ -1,0 +1,174 @@
+[0m[[0m[0mdebug[0m] [0m[0mAcquiring lock on file /Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/project/target/.sbt-compilation-infos/giorgia_fiscaletti_hw1-compile/.sbt-idea-lock ...[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:8:12: object cloudbus is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.cloudbus.cloudsim.core.CloudSim[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:9:12: object cloudbus is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.cloudbus.cloudsim.provisioners.{BwProvisionerSimple, PeProvisionerSimple, RamProvisionerSimple}[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:10:12: object cloudbus is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.cloudbus.cloudsim.{Cloudlet, CloudletSchedulerSpaceShared, Datacenter, DatacenterCharacteristics, Host, Log, NetworkTopology, Pe, Storage, UtilizationModelFull, Vm, VmAllocationPolicySimple, VmSchedulerTimeShared}[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:24:32: not found: type Cloudlet[0m
+[0m[[0m[31merror[0m] [0m[0m  val cloudletList: ListBuffer[Cloudlet] = ListBuffer[Cloudlet]()[0m
+[0m[[0m[31merror[0m] [0m[0m                               ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:24:55: not found: type Cloudlet[0m
+[0m[[0m[31merror[0m] [0m[0m  val cloudletList: ListBuffer[Cloudlet] = ListBuffer[Cloudlet]()[0m
+[0m[[0m[31merror[0m] [0m[0m                                                      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:28:26: not found: type Vm[0m
+[0m[[0m[31merror[0m] [0m[0m  val vmList: ListBuffer[Vm] = ListBuffer[Vm]()[0m
+[0m[[0m[31merror[0m] [0m[0m                         ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:28:43: not found: type Vm[0m
+[0m[[0m[31merror[0m] [0m[0m  val vmList: ListBuffer[Vm] = ListBuffer[Vm]()[0m
+[0m[[0m[31merror[0m] [0m[0m                                          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:52:7: not found: value CloudSim[0m
+[0m[[0m[31merror[0m] [0m[0m      CloudSim.init(conf.getInt("main.num_user"), calendar, conf.getBoolean("main.trace_flag"))[0m
+[0m[[0m[31merror[0m] [0m[0m      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:160:39: not found: type Datacenter[0m
+[0m[[0m[31merror[0m] [0m[0m  def createDatacenter(name: String): Datacenter = {[0m
+[0m[[0m[31merror[0m] [0m[0m                                      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/java/com/gfisca2/MasterNode.java:5:8: object cloudbus is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.cloudbus.cloudsim.*;[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/java/com/gfisca2/MasterNode.java:21:33: not found: type DatacenterBroker[0m
+[0m[[0m[31merror[0m] [0m[0mpublic class MasterNode extends DatacenterBroker {[0m
+[0m[[0m[31merror[0m] [0m[0m                                ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:60:37: value getId is not a member of com.gfisca2.MasterNode[0m
+[0m[[0m[31merror[0m] [0m[0m      val masterNodeId = masterNode.getId[0m
+[0m[[0m[31merror[0m] [0m[0m                                    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:132:49: not found: type Vm[0m
+[0m[[0m[31merror[0m] [0m[0m  def createVM(userId: Int, idShift: Int): List[Vm] = { // Creates a container to store Cloudlets[0m
+[0m[[0m[31merror[0m] [0m[0m                                                ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:68:18: value submitVmList is not a member of com.gfisca2.MasterNode[0m
+[0m[[0m[31merror[0m] [0m[0m      masterNode.submitVmList(asJava(vmList))[0m
+[0m[[0m[31merror[0m] [0m[0m                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:102:55: not found: type Cloudlet[0m
+[0m[[0m[31merror[0m] [0m[0m  def createCloudlet(userId: Int, idShift: Int): List[Cloudlet] = { // Creates a container to store Cloudlets[0m
+[0m[[0m[31merror[0m] [0m[0m                                                      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:76:18: value submitCloudletList is not a member of com.gfisca2.MasterNode[0m
+[0m[[0m[31merror[0m] [0m[0m      masterNode.submitCloudletList(asJava(cloudletList))[0m
+[0m[[0m[31merror[0m] [0m[0m                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:80:7: not found: value NetworkTopology[0m
+[0m[[0m[31merror[0m] [0m[0m      NetworkTopology.addLink(datacenter0.getId, masterNode.getId, conf.getDouble("main.bw_0"), conf.getDouble("main.lat_0"))[0m
+[0m[[0m[31merror[0m] [0m[0m      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:80:61: value getId is not a member of com.gfisca2.MasterNode[0m
+[0m[[0m[31merror[0m] [0m[0m      NetworkTopology.addLink(datacenter0.getId, masterNode.getId, conf.getDouble("main.bw_0"), conf.getDouble("main.lat_0"))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                            ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:81:7: not found: value NetworkTopology[0m
+[0m[[0m[31merror[0m] [0m[0m      NetworkTopology.addLink(datacenter1.getId, masterNode.getId, conf.getDouble("main.bw_1"), conf.getDouble("main.lat_1"))[0m
+[0m[[0m[31merror[0m] [0m[0m      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:81:61: value getId is not a member of com.gfisca2.MasterNode[0m
+[0m[[0m[31merror[0m] [0m[0m      NetworkTopology.addLink(datacenter1.getId, masterNode.getId, conf.getDouble("main.bw_1"), conf.getDouble("main.lat_1"))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                            ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:84:7: not found: value CloudSim[0m
+[0m[[0m[31merror[0m] [0m[0m      CloudSim.startSimulation()[0m
+[0m[[0m[31merror[0m] [0m[0m      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:86:32: value getCloudletReceivedList is not a member of com.gfisca2.MasterNode[0m
+[0m[[0m[31merror[0m] [0m[0m      val newList = masterNode.getCloudletReceivedList[NewCloudlet][0m
+[0m[[0m[31merror[0m] [0m[0m                               ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:88:7: not found: value CloudSim[0m
+[0m[[0m[31merror[0m] [0m[0m      CloudSim.stopSimulation()[0m
+[0m[[0m[31merror[0m] [0m[0m      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:104:27: not found: type Cloudlet[0m
+[0m[[0m[31merror[0m] [0m[0m    val list = ListBuffer[Cloudlet]()[0m
+[0m[[0m[31merror[0m] [0m[0m                          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:105:32: not found: type UtilizationModelFull[0m
+[0m[[0m[31merror[0m] [0m[0m    val utilizationModel = new UtilizationModelFull[0m
+[0m[[0m[31merror[0m] [0m[0m                               ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/java/com/gfisca2/NewCloudlet.java:3:8: object cloudbus is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.cloudbus.cloudsim.Cloudlet;[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/java/com/gfisca2/NewCloudlet.java:19:34: not found: type Cloudlet[0m
+[0m[[0m[31merror[0m] [0m[0mpublic class NewCloudlet extends Cloudlet {[0m
+[0m[[0m[31merror[0m] [0m[0m                                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/java/com/gfisca2/NewCloudlet.java:4:8: object cloudbus is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.cloudbus.cloudsim.UtilizationModel;[0m
+[0m[[0m[31merror[0m] [0m[0m       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/java/com/gfisca2/NewCloudlet.java:74:30: not found: type UtilizationModel[0m
+[0m[[0m[31merror[0m] [0m[0m                       final UtilizationModel utilizationModelCpu,[0m
+[0m[[0m[31merror[0m] [0m[0m                             ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/java/com/gfisca2/NewCloudlet.java:75:30: not found: type UtilizationModel[0m
+[0m[[0m[31merror[0m] [0m[0m                       final UtilizationModel utilizationModelRam,[0m
+[0m[[0m[31merror[0m] [0m[0m                             ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/java/com/gfisca2/NewCloudlet.java:76:30: not found: type UtilizationModel[0m
+[0m[[0m[31merror[0m] [0m[0m                       final UtilizationModel utilizationModelBw,[0m
+[0m[[0m[31merror[0m] [0m[0m                             ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:121:18: value setUserId is not a member of com.gfisca2.NewCloudlet[0m
+[0m[[0m[31merror[0m] [0m[0m        cloudlet.setUserId(userId)[0m
+[0m[[0m[31merror[0m] [0m[0m                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:134:27: not found: type Vm[0m
+[0m[[0m[31merror[0m] [0m[0m    val list = ListBuffer[Vm]()[0m
+[0m[[0m[31merror[0m] [0m[0m                          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:140:22: not found: type Vm[0m
+[0m[[0m[31merror[0m] [0m[0m        val vm = new Vm([0m
+[0m[[0m[31merror[0m] [0m[0m                     ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:149:15: not found: type CloudletSchedulerSpaceShared[0m
+[0m[[0m[31merror[0m] [0m[0m          new CloudletSchedulerSpaceShared()[0m
+[0m[[0m[31merror[0m] [0m[0m              ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:163:31: not found: type Host[0m
+[0m[[0m[31merror[0m] [0m[0m    val hostList = ListBuffer[Host]() // List to store the machine(s)[0m
+[0m[[0m[31merror[0m] [0m[0m                              ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:164:30: not found: type Pe[0m
+[0m[[0m[31merror[0m] [0m[0m    val peList1 = ListBuffer[Pe]()    // First list of processing elements, defining the first CPU[0m
+[0m[[0m[31merror[0m] [0m[0m                             ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:165:30: not found: type Pe[0m
+[0m[[0m[31merror[0m] [0m[0m    val peList2 = ListBuffer[Pe]()    // Second list of processing elements, defining the second CPU[0m
+[0m[[0m[31merror[0m] [0m[0m                             ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:201:34: not found: type Storage[0m
+[0m[[0m[31merror[0m] [0m[0m    val storageList = ListBuffer[Storage]() // we are not adding SAN devices[0m
+[0m[[0m[31merror[0m] [0m[0m                                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:203:31: not found: type DatacenterCharacteristics[0m
+[0m[[0m[31merror[0m] [0m[0m    val characteristics = new DatacenterCharacteristics([0m
+[0m[[0m[31merror[0m] [0m[0m                              ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:218:21: not found: type Datacenter[0m
+[0m[[0m[31merror[0m] [0m[0m    val datacenter: Datacenter = try {[0m
+[0m[[0m[31merror[0m] [0m[0m                    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:219:11: not found: type Datacenter[0m
+[0m[[0m[31merror[0m] [0m[0m      new Datacenter(name, characteristics, new VmAllocationPolicySimple(asJava(hostList)), asJava(storageList), 0)[0m
+[0m[[0m[31merror[0m] [0m[0m          ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:219:49: not found: type VmAllocationPolicySimple[0m
+[0m[[0m[31merror[0m] [0m[0m      new Datacenter(name, characteristics, new VmAllocationPolicySimple(asJava(hostList)), asJava(storageList), 0)[0m
+[0m[[0m[31merror[0m] [0m[0m                                                ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:253:5: not found: value Log[0m
+[0m[[0m[31merror[0m] [0m[0m    Log.printLine()[0m
+[0m[[0m[31merror[0m] [0m[0m    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:254:5: not found: value Log[0m
+[0m[[0m[31merror[0m] [0m[0m    Log.printLine("========== OUTPUT ==========")[0m
+[0m[[0m[31merror[0m] [0m[0m    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:255:5: not found: value Log[0m
+[0m[[0m[31merror[0m] [0m[0m    Log.printLine("Cloudlet ID" + indent + "Type" + indent + indent + "STATUS" + indent + "Data center ID" + indent + "VM ID" + indent + "Time" + indent + "Start Time" + indent + "Finish Time")[0m
+[0m[[0m[31merror[0m] [0m[0m    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:259:7: not found: value Log[0m
+[0m[[0m[31merror[0m] [0m[0m      Log.print(indent + cloudlet.getCloudletFullId + indent + indent + cloudlet.getCloudletType + indent + indent)[0m
+[0m[[0m[31merror[0m] [0m[0m      ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:260:19: value getCloudletStatus is not a member of com.gfisca2.NewCloudlet[0m
+[0m[[0m[31merror[0m] [0m[0m      if(cloudlet.getCloudletStatus == Cloudlet.SUCCESS){[0m
+[0m[[0m[31merror[0m] [0m[0m                  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:260:40: not found: value Cloudlet[0m
+[0m[[0m[31merror[0m] [0m[0m      if(cloudlet.getCloudletStatus == Cloudlet.SUCCESS){[0m
+[0m[[0m[31merror[0m] [0m[0m                                       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:261:9: not found: value Log[0m
+[0m[[0m[31merror[0m] [0m[0m        Log.print("SUCCESS")[0m
+[0m[[0m[31merror[0m] [0m[0m        ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:262:9: not found: value Log[0m
+[0m[[0m[31merror[0m] [0m[0m        Log.print(indent + indent + cloudlet.getResourceId[0m
+[0m[[0m[31merror[0m] [0m[0m        ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:262:46: value getResourceId is not a member of com.gfisca2.NewCloudlet[0m
+[0m[[0m[31merror[0m] [0m[0m        Log.print(indent + indent + cloudlet.getResourceId[0m
+[0m[[0m[31merror[0m] [0m[0m                                             ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:263:49: value getVmId is not a member of com.gfisca2.NewCloudlet[0m
+[0m[[0m[31merror[0m] [0m[0m          + indent + indent + indent + cloudlet.getVmId[0m
+[0m[[0m[31merror[0m] [0m[0m                                                ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:264:51: value getActualCPUTime is not a member of com.gfisca2.NewCloudlet[0m
+[0m[[0m[31merror[0m] [0m[0m          + indent + indent + dft.format(cloudlet.getActualCPUTime)[0m
+[0m[[0m[31merror[0m] [0m[0m                                                  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:265:51: value getExecStartTime is not a member of com.gfisca2.NewCloudlet[0m
+[0m[[0m[31merror[0m] [0m[0m          + indent + indent + dft.format(cloudlet.getExecStartTime)[0m
+[0m[[0m[31merror[0m] [0m[0m                                                  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:268:64: not found: value Log[0m
+[0m[[0m[31merror[0m] [0m[0m      if(cloudlet.getCloudletType == NewCloudlet.Type.REDUCER) Log.print(indent + indent + "Reducing results of mappers:" + cloudlet.getAssociatedMappers)[0m
+[0m[[0m[31merror[0m] [0m[0m                                                               ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2/Example1.scala:269:7: not found: value Log[0m
+[0m[[0m[31merror[0m] [0m[0m      Log.print("\n")[0m
+[0m[[0m[31merror[0m] [0m[0m      ^[0m
+[0m[[0m[31merror[0m] [0m[0m57 errors found[0m
+[0m[[0m[0mdebug[0m] [0m[0mReleasing lock on file /Users/giorgiafiscaletti/Documents/UIC/CloudComputing/Giorgia_Fiscaletti_hw1/project/target/.sbt-compilation-infos/giorgia_fiscaletti_hw1-compile/.sbt-idea-lock.[0m

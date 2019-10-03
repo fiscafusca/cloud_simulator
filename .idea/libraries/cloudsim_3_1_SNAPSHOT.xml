@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="cloudsim-3.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../cloud2sim/lib/cloudsim-3.1-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../cloud2sim/lib/cloudsim-3.1-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

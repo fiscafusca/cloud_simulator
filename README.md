@@ -17,7 +17,8 @@ The project is developed in Scala and can be compiled using SBT. The CloudSim cl
 https://giorgiafiscaletti2@bitbucket.org/giorgiafiscaletti2/giorgia_fiscaletti_hw1.git
 ```
 - Import the sbt project (a log window will appear on the bottom right of the screen) keeping the default settings
-- Go in /Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2 and select the simulation to run
+- Go in /Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2 and run SimulationPolicy.scala
+- You will be asked to make a choice between the different configuration files to run the desired simulation: type the number corresponding to the chosen simulation (i.e. type 1.1 for the simulation corresponding to "# of single-core VMs ≥ # of dual-core VMs & # of single-core cloudlets ≥ # of dual-core cloudlets without the scheduling policy")
 
 ### SBT CLI
 
@@ -33,6 +34,7 @@ sbt clean compile test
 ```
 sbt clean compile run
 ```
+- Again, you will be asked to select a configuration file to run the desired simulation, follow the instructions above for IntelliJ IDEA
 ## Project Structure
 
 The project has been developed both in Scala and Java. The simulations and the tests have been written in Scala, while the extensions of the CloudSim classes are written in Java. A configuration file is provided for each simulation.
@@ -41,10 +43,7 @@ The project has been developed both in Scala and Java. The simulations and the t
 
 #### Simulations
 
-The simulations provided are:
-
-- SimulationPolicy: simulation with the implemented allocation policy considering the impact of communication between cores in multi-cores CPUs  
-- SimulationNoPolicy: simulation without the implemented allocation policy
+In order to avoid code redundancy, only one file is provided: SimulationPolicy.scala. It allows to run eight distinct simulations with four different configurations (i.e. number of single-core VMs, dual-core VMs, single-core cloudlets and dual-core cloudlets), all of them with or without the scheduling policy. The configuration file is selected at the beginning of the computation via standard input. In this way, the user can compare the different results obtained in the four main cases of interest mentioned in the Configuration files section and explained in the Evaluation section.
 
 #### Tests
 
@@ -68,10 +67,11 @@ The following are the classes extended from the CloudSim framework:
 
 ### Configuration files
 
-The two configuration files are withPolicy.conf and noPolicy.conf, respectively used in SimulationPolicy.scala and SimulationNoPolicy.scala.
-The configurations share all the parameters related to Datacenters, Hosts, VMs and Cloudlets. The only parameter that differs between the two configuration is a boolean value that is set to true in the first one to enable the scheduling policy, and fals ein the second one to disable it.
+The eight configuration files allow to run eight distinct simulation just running the SimulationPolicy.scala program, leveraging at their best the advantages of having parameters in configuration files instead of hardcoding them in the code. They present in couples the same configuration, but respectively enabling or not the scheduling policy. For example, noPolicy1.conf is the configuration file for the first case without the policy, while withPolicy1.conf is the first case with the policy. The four main cases generated are explained in the Evaluation section. 
 
 ### Parameters
+
+The parameters that vary among the configuration files are highlighted and do not show the correspondent value. 
 
 - Main: contains the parameters used in the main method of the simulation.
 
@@ -91,7 +91,7 @@ The configurations share all the parameters related to Datacenters, Hosts, VMs a
       - fileSize = 300, input size
       - outputSize = 300, output size
       - pesNumber = 1, number of processing elements required
-      - count = 10, the number of cloudlet to generate
+      - **count, the number of cloudlet to generate**
       - type = 0, integer representing the cloudlet type (mapper in this case)
   
 - Cloudlet_1: contains the parameters for the second type of cloudlet (general).
@@ -100,7 +100,7 @@ The configurations share all the parameters related to Datacenters, Hosts, VMs a
       - fileSize = 300, input size
       - outputSize = 300, output size
       - pesNumber = 2, number of processing elements required
-      - count = 5, the number of cloudlet to generate
+      - **count, the number of cloudlet to generate**
       - type = 2, integer representing the cloudlet type (general in this case)
   
 - Cloudlet_2: contains the parameters for the third type of cloudlet (reducer). Note that in this case the parameter "count" is not needed, since we are going to generate the cloudlets at runtime depending on the number of submitted mappers.
@@ -120,7 +120,7 @@ The configurations share all the parameters related to Datacenters, Hosts, VMs a
       - bw = 1000, bandwidth of the VM
       - pesNumber = 2, number of PEs assigned to the VM
       - vmm = "Xen", VMM name
-      - count = 5, number of VM to create
+      - **count, number of VM to create**
 
 - vm_1: contains the parameters for the second type of VM.
 
@@ -131,7 +131,7 @@ The configurations share all the parameters related to Datacenters, Hosts, VMs a
       - bw = 1000, bandwidth of the VM
       - pesNumber = 1, number of PEs assigned to the VM
       - vmm = "Xen", VMM name
-      - count = 5, number of VM to create
+      - **count, number of VM to create**
 
 - Datacenter: contains the parameters for the datacenter.
 
@@ -161,7 +161,7 @@ The configurations share all the parameters related to Datacenters, Hosts, VMs a
 - Masternode: contains the parameters needed in the MasterNode class implementation.
 
       - mapreduce = 2, the number of mappers associated to each reducer (e.g. in this case each reducer is dynamically allocated every 2 mappers)
-      - sched_policy = true if the scheduling policy is enabled, false otherwise
+      - **sched_policy = true if the scheduling policy is enabled, false otherwise**
 
 
 ## Implementation of the map/reduce task
@@ -170,4 +170,23 @@ The configurations share all the parameters related to Datacenters, Hosts, VMs a
  
 ## Scheduling policy
 
+### Description
+
 The implemented scheduling policy takes into account the loss of performance introduced in multi-cores CPUs by the communication channels between cores and the information exchange between them. This loss introduces a slight delay in the computation that might increase the overall timing if cloudlets that need only a single processing unit are scheduled on VMs for which multiple cores were allocated. With the default scheduling policy, the VMs are added in a list and the cloudlets are scheduled just following the list order, without taking in consideration the processing elements needed by the cloudlets and provided by the VMs. The implemented policy instead schedules cloudlets as follows: if the cloudlet needs a lower number of processing units than the ones allocated in the first choice VM, the MasterNode will search for a new VM that provides possibly the same number of processing elements required by the cloudlet for its execution. In our particular case, we are considering single-core and dual-cores CPUs, and cloudlets that either need one or two cores. An index is used to keep track of the last single-core VM used to process a cloudlet that requires a single core. The MasterNode searches among the VMs, starting from the last single-core VM allocated. If there is no other single-core machine available, the cloudlet will be submitted to a dual-core machine. In this way, the MasterNode will try to use as many single-core VMs as possible to execute the cloudlets that require a single core, leaving as many dual-core VMs as possible for those cloudlets that require 2 cores. This feature is well shown in the results of the simulations, since in this configuration general cloudlets require 2 PEs while mappers require just one PE, and cloudlets of both types are submitted together at the same time. As we can see from the results, the MasterNode allocates on single-cores VMs as many single-PE cloudlets as possible. If the configuration provides enough single-cores VMs to run as many single-PE cloudlets as possible, this policy leads to a reduction of both execution time and overall processing cost. The single-core/dual-core case can be easily extended to cases with multiple multi-cores machines. 
+
+### Evaluation
+
+Four distinct cases can be defined to evaluate our policy, depending on the four possible combinations of the number of VMs and cloudlets in the configuration: 
+
+1. \# of single-core VMs ≥ \# of dual-core VMs & \# of single-core cloudlets ≥ \# of dual-core cloudlets;
+2. \# of single-core VMs ≥ \# of dual-core VMs & \# of single-core cloudlets < \# of dual-core cloudlets;
+3. \# of single-core VMs < \# of dual-core VMs & \# of single-core cloudlets < \# of dual-core cloudlets;
+4. \# of single-core VMs < \# of dual-core VMs & \# of single-core cloudlets ≥ \# of dual-core cloudlets;
+
+In the first three cases, the policy is effective: if the master node takes into account the number of cores needed by the cloudlets and searches for a VM with an appropriate number of cores, both the execution time and the overall cost of the computation are reduced. In case 1, this happens because we have a higher number of single-core VMs, and submitting as many single-core cloudlets as possible to the available single-core VMs allows to reduce the overhead introduced by the communication delay of multi-core CPUs. In case 2 and 3 instead, the policy is effective because we have a larger number of dual-core cloudlets, and the policy allows not to waste dual-core VMs' CPUs with the computation of single-core cloudlets that can be submitted to single-core VMs.
+
+The fourth case represents the limitation of the implemented policy. If we have both a larger number of dual-core VMs and dual-core cloudlets, trying to submit single-core cloudlets to single-core machines is just a waste of time, since we have enough dual-core machines to execute both single-core and multi-core tasks. The cost is still reduced, but by an amount that is not relevant compared to the increase of the execution time.
+
+## Results
+
+

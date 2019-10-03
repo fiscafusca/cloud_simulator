@@ -34,14 +34,6 @@ object SimulationPolicy {
    */
   val LOG: Logger = LoggerFactory.getLogger(getClass)
   /**
-   * Config file name.
-   */
-  val confName : String = "withPolicy.conf"
-  /**
-   * Initialization of the parameter to load the configuration.
-   */
-  val conf: Config = ConfigFactory.load(confName)
-  /**
    * Creates main() to run this example.
    *
    * @param args the args
@@ -54,20 +46,43 @@ object SimulationPolicy {
 
       val calendar = Calendar.getInstance() // Calendar whose fields have been initialized with the current date and time.
 
+      LOG.info("Select the name of the configuration file for the desired simulation to run (type the correspondent index): ")
+
+      LOG.info("1.0 # of single-core VMs ≥ # of dual-core VMs & # of single-core cloudlets ≥ # of dual-core cloudlets with scheduling policy;")
+      LOG.info("1.1 # of single-core VMs ≥ # of dual-core VMs & # of single-core cloudlets ≥ # of dual-core cloudlets without scheduling policy;")
+
+      LOG.info("2.0 # of single-core VMs ≥ # of dual-core VMs & # of single-core cloudlets < # of dual-core cloudlets with scheduling policy;")
+      LOG.info("2.1 # of single-core VMs ≥ # of dual-core VMs & # of single-core cloudlets < # of dual-core cloudlets without scheduling policy;")
+
+      LOG.info("3.0 # of single-core VMs < # of dual-core VMs & # of single-core cloudlets < # of dual-core cloudlets with scheduling policy;")
+      LOG.info("3.1 # of single-core VMs < # of dual-core VMs & # of single-core cloudlets < # of dual-core cloudlets without scheduling policy;")
+
+      LOG.info("4.0 # of single-core VMs < # of dual-core VMs & # of single-core cloudlets ≥ # of dual-core cloudlets with scheduling policy;")
+      LOG.info("4.1 # of single-core VMs < # of dual-core VMs & # of single-core cloudlets ≥ # of dual-core cloudlets without scheduling policy;")
+
+      val input = scala.io.StdIn.readDouble()
+
+      val confName : String = chooseFile(input)
+
+      /**
+       * Initialization of the parameter to load the configuration.
+       */
+      val conf: Config = ConfigFactory.load(confName)
+
       // Initialization of the CloudSim library.
       CloudSim.init(conf.getInt("main.num_user"), calendar, conf.getBoolean("main.trace_flag"))
 
       // Creation of the 2 datacenters.
-      val datacenter0 = createDatacenter("Datacenter_0")
-      val datacenter1 = createDatacenter("Datacenter_1")
+      val datacenter0 = createDatacenter("Datacenter_0", conf)
+      val datacenter1 = createDatacenter("Datacenter_1", conf)
 
       // Creation of the Master Node.
-      val masterNode = createMasterNode(0)
+      val masterNode = createMasterNode(0, confName)
       val masterNodeId = masterNode.getId
 
       // Creation of a list of Virtual Machines with the parameters defined in the configuration file.
       // The VMs are directly added to the list.
-      vmList ++= createVM(masterNodeId, conf.getInt("main.idShift"))
+      vmList ++= createVM(masterNodeId, conf.getInt("main.idShift"), conf)
       vmList.toList
 
       // Submission of VM list to the Master Node.
@@ -75,7 +90,7 @@ object SimulationPolicy {
 
       // Creation of a list of Cloudlets with the parameters defined in the configuration file.
       // The Cloudlets are directly added to the list.
-      cloudletList ++= createCloudlet(masterNodeId, conf.getInt("main.idShift"))
+      cloudletList ++= createCloudlet(masterNodeId, conf.getInt("main.idShift"), conf)
       cloudletList.toList
 
       // Submission of Cloudlet list to the Master Node.
@@ -105,7 +120,7 @@ object SimulationPolicy {
     }
   }
 
-  def createCloudlet(userId: Int, idShift: Int): List[Cloudlet] = { // Creates a container to store Cloudlets
+  def createCloudlet(userId: Int, idShift: Int, conf: Config): List[Cloudlet] = { // Creates a container to store Cloudlets
     // Creates a container to store the desired Cloudlets
     val list = ListBuffer[Cloudlet]()
     val utilizationModel = new UtilizationModelFull
@@ -135,7 +150,7 @@ object SimulationPolicy {
 
   }
 
-  def createVM(userId: Int, idShift: Int): List[Vm] = { // Creates a container to store Cloudlets
+  def createVM(userId: Int, idShift: Int, conf: Config): List[Vm] = { // Creates a container to store Cloudlets
     // Creates a container to store the desired Cloudlets
     val list = ListBuffer[Vm]()
 
@@ -163,7 +178,7 @@ object SimulationPolicy {
 
   }
 
-  def createDatacenter(name: String): Datacenter = {
+  def createDatacenter(name: String, conf: Config): Datacenter = {
 
     // Creates the datacenter.
     val hostList = ListBuffer[Host]() // List to store the machine(s)
@@ -233,7 +248,7 @@ object SimulationPolicy {
 
   }
 
-  def createMasterNode(id: Int): MasterNode = {
+  def createMasterNode(id: Int, confName: String): MasterNode = {
     // Creates the Master Node.
     val masterNode: MasterNode = try {
       new MasterNode("MasterNode_"+id, confName)
@@ -303,6 +318,21 @@ object SimulationPolicy {
 
     val overallCost = getOverallCost(list)
     LOG.info("OVERALL COST: " + overallCost)
+
+  }
+
+  def chooseFile(input : Double): String = {
+
+    input match {
+      case 1.0 => "withPolicy1.conf"
+      case 1.1 => "noPolicy1.conf"
+      case 2.0 => "withPolicy2.conf"
+      case 2.1 => "noPolicy1.conf"
+      case 3.0 => "withPolicy3.conf"
+      case 3.1 => "noPolicy1.conf"
+      case 4.0 => "withPolicy4.conf"
+      case 4.1 => "noPolicy1.conf"
+    }
 
   }
 
