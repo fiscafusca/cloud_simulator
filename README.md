@@ -192,23 +192,23 @@ The fourth case represents the limitation of the implemented policy. If we have 
 
 ## Results
 
-The results of the simulations are contained in the .csv files contained in the csv folder. They can be visualized by running the Python notebook Simulations_results.ipynb. To do so, follow these steps:
+The results of the simulations are contained in the .csv files contained in the csv folder. They can be visualized by running the Python notebook Simulations_results.ipynb. If you do not have Jupyter installed, follow the right installation instruction for your operating system among the following:
 
-- If you do not have Jupyter installed, open a terminal and type:
-
-   - if you are on Linux:
+- If you are on Linux:
   
 ```
 sudo apt-get install jupyter
 ```
   
-   - if you are on macOS:
+- If you are on macOS:
 
 ```
 brew install jupyter
 ```
   
-   - if you are on Windows, you need to download and install Anaconda.
+- If you are on Windows, you need to download and install Anaconda.
+
+After you have installed Jupyter/Anaconda: 
   
 - Open a terminal (or Anaconda prompt for Windows) in the project root folder and type:
 
