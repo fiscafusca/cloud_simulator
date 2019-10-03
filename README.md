@@ -163,16 +163,19 @@ The parameters that vary among the configuration files are highlighted and do no
       - mapreduce = 2, the number of mappers associated to each reducer (e.g. in this case each reducer is dynamically allocated every 2 mappers)
       - **sched_policy = true if the scheduling policy is enabled, false otherwise**
 
+Note: some of the values presented are just for demonstration purposes and might not reflect real systems features.
 
 ## Implementation of the map/reduce task
  
- As mentioned above, the framework has been extended in order to enable the execution of map/reduce tasks. First off, an extension of the Cloudlet class (NewCloudlet) has been implemented, in order to distinguish between different types of cloudlets (mappers, reducers, and general; the last one represents any other task). Then, the DatacenterBroker class was extended to obtain the MasterNode class. The override of its processEvent(simEvent ev) method distinguishes between the different types of cloudlets and performs different actions in response to the CLOUDLET_RETURN event. If the returned cloudlet is of type GENERAL (i.e. any other cloudlet that is not a mapper), the CLOUDLET_RETURN event is processed as in the default implementation of the DatacenterBroker. If the cloudlet is a MAPPER instead, the MasterNode starts instantiates the counter of the returned mappers. Whenever the counter arrives to a certain value specified in the configuration file as "mapreduce" (2 in our case), the MasterNode generates a reduce task that takes the output of the completed mappers as input. In other words, a new reducer is generated as soon as n mappers have terminated. Once the reducer is submitted, the counter is cleared and instantiated again as soon as the next mapper returns a result. If the number of mappers left in the list is less than the number of mappers that provide the input to a reducer, a reducer will be generated to handle the remaining mappers (i.e. if the number of mappers % mapreduce value != 0).  
+As mentioned above, the framework has been extended in order to enable the execution of map/reduce tasks. First off, an extension of the Cloudlet class (NewCloudlet) has been implemented, in order to distinguish between different types of cloudlets (mappers, reducers, and general; the last one represents any other task). Then, the DatacenterBroker class was extended to obtain the MasterNode class. The override of its processEvent(simEvent ev) method distinguishes between the different types of cloudlets and performs different actions in response to the CLOUDLET_RETURN event. If the returned cloudlet is of type GENERAL (i.e. any other cloudlet that is not a mapper), the CLOUDLET_RETURN event is processed as in the default implementation of the DatacenterBroker. If the cloudlet is a MAPPER instead, the MasterNode starts instantiates the counter of the returned mappers. Whenever the counter arrives to a certain value specified in the configuration file as "mapreduce" (2 in our case), the MasterNode generates a reduce task that takes the output of the completed mappers as input. In other words, a new reducer is generated as soon as n mappers have terminated. Once the reducer is submitted, the counter is cleared and instantiated again as soon as the next mapper returns a result. If the number of mappers left in the list is less than the number of mappers that provide the input to a reducer, a reducer will be generated to handle the remaining mappers (i.e. if the number of mappers % mapreduce value != 0).  
  
 ## Scheduling policy
 
 ### Description
 
 The implemented scheduling policy takes into account the loss of performance introduced in multi-cores CPUs by the communication channels between cores and the information exchange between them. This loss introduces a slight delay in the computation that might increase the overall timing if cloudlets that need only a single processing unit are scheduled on VMs for which multiple cores were allocated. With the default scheduling policy, the VMs are added in a list and the cloudlets are scheduled just following the list order, without taking in consideration the processing elements needed by the cloudlets and provided by the VMs. The implemented policy instead schedules cloudlets as follows: if the cloudlet needs a lower number of processing units than the ones allocated in the first choice VM, the MasterNode will search for a new VM that provides possibly the same number of processing elements required by the cloudlet for its execution. In our particular case, we are considering single-core and dual-cores CPUs, and cloudlets that either need one or two cores. An index is used to keep track of the last single-core VM used to process a cloudlet that requires a single core. The MasterNode searches among the VMs, starting from the last single-core VM allocated. If there is no other single-core machine available, the cloudlet will be submitted to a dual-core machine. In this way, the MasterNode will try to use as many single-core VMs as possible to execute the cloudlets that require a single core, leaving as many dual-core VMs as possible for those cloudlets that require 2 cores. This feature is well shown in the results of the simulations, since in this configuration general cloudlets require 2 PEs while mappers require just one PE, and cloudlets of both types are submitted together at the same time. As we can see from the results, the MasterNode allocates on single-cores VMs as many single-PE cloudlets as possible. If the configuration provides enough single-cores VMs to run as many single-PE cloudlets as possible, this policy leads to a reduction of both execution time and overall processing cost. The single-core/dual-core case can be easily extended to cases with multiple multi-cores machines. 
+
+The communicatin overhead between the cores in multi-core VMs was computed by mulitplying the number of cores in the VM the cloudlet was submitted to by a factor of 0.7; the result is then added to the execution time of the cloudlet.
 
 ### Evaluation
 
@@ -195,15 +198,15 @@ The results of the simulations are contained in the .csv files contained in the 
 
   - if you are on Linux:
   
-  ```
-  sudo apt-get install jupyter
-  ```
+```
+sudo apt-get install jupyter
+```
   
   - if you are on macOS:
-  
-  ```
-  brew install jupyter
-  ```
+
+```
+brew install jupyter
+```
   
   - if you are on Windows, you need to download and install Anaconda.
   
@@ -216,6 +219,9 @@ jupyter notebook
 - A browser page will be opened, showing the content of the project root directory. Click on Simulations_results.ipynb
 
 - You will be redirected to the notebook file. If the content is not visualized correctly, click on the Kernel tab and select "Restart & Run All"
+
+The overall processing cost was computed by multiplying the actual CPU time of each cloudlet by the peCostPerSec parameter, and summing up the costs of all the cloudlets in the list.
+The execution time was computed by subtracting the start time of the fist cloudlet to the finish time of the last cloudlet. 
 
 As already stated in the Evaluation section, the simulations related to the first 3 configurations show a clear improvement of the results when the custom scheduling policy is enabled:
 
