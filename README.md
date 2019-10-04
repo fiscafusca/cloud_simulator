@@ -14,11 +14,8 @@ The project is developed in Scala and can be compiled using SBT. The CloudSim cl
 ```
 git clone https://giorgiafiscaletti2@bitbucket.org/giorgiafiscaletti2/giorgia_fiscaletti_hw1.git
 ```
-- Open IntelliJ IDEA and select "Import project" in the welcome screen
-- Select the project folder
-- Choose “Import project from external model”, select sbt and click on “Next”
-- Leave the default SBT configuration and confirm
-- After the SBT build is complete, go in /Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2 and run SimulationPolicy.scala (IntelliJ may fail in creating the configuration for the simulation to run. In this case, running tests first proved to be a solution)  
+- A window for SBT import will appear: leave the default settings and confirm
+- After the SBT build is complete, go in /giorgia_fiscaletti_hw1/src/main/scala/com/gfisca2 and run SimulationPolicy.scala (IntelliJ may fail in creating the configuration for the simulation to run. In this case, running tests first proved to be a solution)
 - You will be asked to make a choice between the different configuration files to run the desired simulation: type the number corresponding to the chosen simulation (i.e. type 1.1 for the simulation corresponding to "# of single-core VMs ≥ # of dual-core VMs & # of single-core cloudlets ≥ # of dual-core cloudlets without the scheduling policy")
 
 Note: if IntelliJ fails in recognizing the CloudSim dependencies, go in File -> Project Structure -> Libraries and add the .jar files manually.
