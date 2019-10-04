@@ -165,6 +165,8 @@ The parameters that vary among the configuration files are highlighted and do no
       - mapreduce = 2, the number of mappers associated to each reducer (e.g. in this case each reducer is dynamically allocated every 2 mappers)
       - **sched_policy = true if the scheduling policy is enabled, false otherwise**
 
+In the simulation code, two network links (one per datacenter) were added in order to simulate different latencies between the master node and the two different datacenter. The parameters for latency and bandwidth of the network links are contained in the "main" section of the configuration file.
+
 Note: some of the values presented are just for demonstration purposes and might not reflect real systems features.
 
 ## Implementation of the map/reduce task
@@ -177,7 +179,9 @@ As mentioned above, the framework has been extended in order to enable the execu
 
 The implemented scheduling policy takes into account the loss of performance introduced in multi-core CPUs by the communication channels between cores and the information exchange between them. This loss introduces a slight delay in the computation that might increase the overall timing if cloudlets that need only a single processing unit are scheduled on VMs for which multiple cores were allocated. With the default scheduling policy, the VMs are added in a list and the cloudlets are scheduled just following the list order, without taking in consideration the processing elements needed by the cloudlets and provided by the VMs. The implemented policy instead schedules cloudlets as follows: if the cloudlet needs a lower number of processing units than the ones allocated in the first choice VM, the MasterNode will search for a new VM that provides possibly the same number of processing elements required by the cloudlet for its execution. In our particular case, we are considering single-core and dual-cores CPUs, and cloudlets that either need one or two cores. An index is used to keep track of the last single-core VM used to process a cloudlet that requires a single core. The MasterNode searches among the VMs, starting from the last single-core VM allocated. If there is no other single-core machine available, the cloudlet will be submitted to a dual-core machine. In this way, the MasterNode will try to use as many single-core VMs as possible to execute the cloudlets that require a single core, leaving as many dual-core VMs as possible for those cloudlets that require 2 cores. This feature is well shown in the results of the simulations, since in this configuration general cloudlets require 2 PEs while mappers require just one PE, and cloudlets of both types are submitted together at the same time. As we can see from the results, the MasterNode allocates on single-cores VMs as many single-PE cloudlets as possible. If the configuration provides enough single-cores VMs to run as many single-PE cloudlets as possible, this policy leads to a reduction of both execution time and overall processing cost. The single-core/dual-core case can be easily extended to cases with multiple multi-core machines. 
 
-The communicatin overhead between the cores in multi-core VMs was computed by mulitplying the number of cores in the VM the cloudlet was submitted to by a factor of 0.7; the result is then added to the execution time of the cloudlet.
+The communication overhead between the cores in multi-core VMs was computed by mulitplying the number of cores in the VM the cloudlet was submitted to by a factor of 0.7; the result is then added to the execution time of the cloudlet.
+
+In order to better highlight the results of the policy, all the VMs are assumed to use the space shared cloudlet scheduler. In this way, each core is assigned to just one cloudlet.
 
 ### Evaluation
 
@@ -222,6 +226,8 @@ jupyter notebook
 
 - You will be redirected to the notebook file. If the content is not visualized correctly, click on the Kernel tab and select "Restart & Run All"
 
+For what concerns CPU and RAM utilization, the system is assumed to be compute-bound. Therefore, the cloudlets use 100% of both the dedicated RAM and CPU for their execution. To do so, we used the UtilizationModelFull implementation as the cloudlets' utilization model.
+
 The overall processing cost was computed by multiplying the actual CPU time of each cloudlet by the peCostPerSec parameter, and summing up the costs of all the cloudlets in the list.
 The execution time was computed by subtracting the start time of the fist cloudlet to the finish time of the last cloudlet. 
 
@@ -237,7 +243,7 @@ In the last case, we have a slight improvement of overall cost but the execution
 
 ## Conclusions and future works
 
-From the results obtained by running the different simulations we can say that the implemented scheduling policy is convenient in most of the configurations, as it allows to reduce both the overall processing cost and execution time. Future works could involve the extension of the policy to more than 2 types of cores (i.e. adding further multi-core CPUs), and finding a sound alternative to avoid the significant loss in execution time in the fourth presented case when the policy is enabled. 
+From the results obtained by running the different simulations we can say that the implemented scheduling policy is convenient in most of the configurations, as it allows to reduce both the overall processing cost and execution time. Future works could involve the extension of the policy to more than 2 types of cores (i.e. adding further multi-core CPUs), and finding a sound alternative to avoid the significant loss in execution time in the fourth presented case when the policy is enabled. An interesting follow-up would also be to explore efficient ways to recognize whether the given datacenter configuration is suitable for the implemented scheduling policy.
 
 
 
