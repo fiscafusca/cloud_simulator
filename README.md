@@ -35,7 +35,7 @@ git clone https://giorgiafiscaletti2@bitbucket.org/giorgiafiscaletti2/giorgia_fi
 - After the SBT build is complete, go in /giorgia_fiscaletti_hw1/src/main/scala/com/gfisca2 and run SimulationPolicy.scala
 - You will be asked to make a choice between the different configuration files to run the desired simulation: type the number corresponding to the chosen simulation (i.e. type 1.1 for the simulation corresponding to "# of single-core VMs ≥ # of dual-core VMs & # of single-core cloudlets ≥ # of dual-core cloudlets without the scheduling policy")
 
-**WARNING: IntelliJ might have problems in creating the run configuration for the SimulationPolicy.scala program. If it fails to find the main class, go in Run -> Edit Configurations... and add /src/main to the working directory. Then try to run the program again. If the problem persists, running tests first has proved to be a solution.**
+**WARNING: IntelliJ might have problems in creating the run configuration for the SimulationPolicy.scala program. If it fails to find the main class, go in Run -> Edit Configurations... and add /src/main to the working directory. Then try to run the program again. If the problem persists, running tests first has proved to be another solution.**
 
 Note: if IntelliJ fails in recognizing the CloudSim dependencies, go in File -> Project Structure -> Libraries and add the .jar files manually.
 
