@@ -12,6 +12,17 @@ The project is developed in Scala and can be compiled using SBT. The CloudSim cl
 
 ### IntelliJ IDEA
 
+- Open IntelliJ IDEA and select "Check out from Version Control" in the welcome screen
+- Select "Git"
+- Enter the repository URL (below), click on "Clone" and confirm when asked:
+```
+https://giorgiafiscaletti2@bitbucket.org/giorgiafiscaletti2/giorgia_fiscaletti_hw1.git
+```
+- A window for SBT import will appear: leave the default settings and confirm
+- Go in /Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2 and run SimulationPolicy.scala
+
+Otherwise:
+
 - Open a terminal and type:
 ```
 git clone https://giorgiafiscaletti2@bitbucket.org/giorgiafiscaletti2/giorgia_fiscaletti_hw1.git
@@ -19,6 +30,8 @@ git clone https://giorgiafiscaletti2@bitbucket.org/giorgiafiscaletti2/giorgia_fi
 - A window for SBT import will appear: leave the default settings and confirm
 - After the SBT build is complete, go in /giorgia_fiscaletti_hw1/src/main/scala/com/gfisca2 and run SimulationPolicy.scala (IntelliJ may fail in creating the configuration for the simulation to run. In this case, running tests first proved to be a solution)
 - You will be asked to make a choice between the different configuration files to run the desired simulation: type the number corresponding to the chosen simulation (i.e. type 1.1 for the simulation corresponding to "# of single-core VMs ≥ # of dual-core VMs & # of single-core cloudlets ≥ # of dual-core cloudlets without the scheduling policy")
+
+**WARNING: IntelliJ might have problems in creating the run configuration for the SimulationPolicy.scala program. If it fails to find the main class, go in Run -> Edit Configurations... and add /src/main to the working directory. Then try to run the program again. If the problem persists, running tests first has proved to be a possible solution.**
 
 Note: if IntelliJ fails in recognizing the CloudSim dependencies, go in File -> Project Structure -> Libraries and add the .jar files manually.
 
