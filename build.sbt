@@ -1,4 +1,4 @@
-name := "Giorgia_Fiscaletti_hw1"
+name := "giorgia_fiscaletti_hw1"
 
 version := "0.1"
 
