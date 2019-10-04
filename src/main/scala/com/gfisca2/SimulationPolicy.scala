@@ -10,8 +10,8 @@ import org.cloudbus.cloudsim.provisioners.{BwProvisionerSimple, PeProvisionerSim
 import org.cloudbus.cloudsim.{Cloudlet, CloudletSchedulerSpaceShared, Datacenter, DatacenterCharacteristics, Host, NetworkTopology, Pe, Storage, UtilizationModelFull, Vm, VmAllocationPolicySimple, VmSchedulerTimeShared}
 import org.slf4j.{Logger, LoggerFactory}
 
-import scala.jdk.javaapi.CollectionConverters._
 import scala.collection.mutable.ListBuffer
+import scala.jdk.javaapi.CollectionConverters.{asJava, asScala}
 
 /**
  * An example showing the creation of 2 datacenters with both map/reduce and general cloudlets running on them.
