@@ -37,7 +37,7 @@ sbt clean compile run
 - Again, you will be asked to select a configuration file to run the desired simulation, follow the instructions above for IntelliJ IDEA
 ## Project Structure
 
-The project has been developed both in Scala and Java. The simulations and the tests have been written in Scala, while the extensions of the CloudSim classes are written in Java. A configuration file is provided for each simulation.
+The project has been developed both in Scala and Java. The simulation and the test files have been written in Scala, while the extensions of the CloudSim classes are written in Java. A configuration file is provided for each simulation.
 
 ### Scala
 
