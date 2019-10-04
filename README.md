@@ -26,7 +26,7 @@ https://giorgiafiscaletti2@bitbucket.org/giorgiafiscaletti2/giorgia_fiscaletti_h
 ```
 git clone https://giorgiafiscaletti2@bitbucket.org/giorgiafiscaletti2/giorgia_fiscaletti_hw1.git
 ```
-- To run the tests, type:
+- To run the tests, type the following command and select any of the simulations when asked:
 ```
 sbt clean compile test
 ```

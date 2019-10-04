@@ -46,7 +46,7 @@ object SimulationPolicy {
 
       val calendar = Calendar.getInstance() // Calendar whose fields have been initialized with the current date and time.
 
-      LOG.info("Select the name of the configuration file for the desired simulation to run (type the correspondent index): ")
+      LOG.info("Select the configuration file for the desired simulation to run (type the correspondent index): ")
 
       LOG.info("1.0 # of single-core VMs ≥ # of dual-core VMs & # of single-core cloudlets ≥ # of dual-core cloudlets with scheduling policy;")
       LOG.info("1.1 # of single-core VMs ≥ # of dual-core VMs & # of single-core cloudlets ≥ # of dual-core cloudlets without scheduling policy;")
