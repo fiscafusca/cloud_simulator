@@ -18,8 +18,10 @@ https://giorgiafiscaletti2@bitbucket.org/giorgiafiscaletti2/giorgia_fiscaletti_h
 ```
 - A window for SBT import will appear: leave the default settings and confirm
 - Go in /Giorgia_Fiscaletti_hw1/src/main/scala/com/gfisca2 and run SimulationPolicy.scala
+
   - IntelliJ may fail in creating the configuration for the simulation to run. In this case, running tests first appeared to be a solution.
   - If IntelliJ fails in recognizing the CloudSim dependencies, go in File -> Project Structure -> Libraries and add the .jar files manually.
+  
 - You will be asked to make a choice between the different configuration files to run the desired simulation: type the number corresponding to the chosen simulation (i.e. type 1.1 for the simulation corresponding to "# of single-core VMs ≥ # of dual-core VMs & # of single-core cloudlets ≥ # of dual-core cloudlets without the scheduling policy")
 
 ### SBT CLI
