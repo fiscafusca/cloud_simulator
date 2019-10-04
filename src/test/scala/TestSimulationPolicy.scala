@@ -84,7 +84,6 @@ class TestSimulationPolicy extends FlatSpec {
     masterNode.submitVmList(asJava(vmList2))
     cloudletList2 ++= createCloudlet(masterNodeId, conf2.getInt("main.idShift"), conf2)
     cloudletList2.toList
-    println(cloudletList2.size)
     masterNode.submitCloudletList(asJava(cloudletList2))
     CloudSim.startSimulation()
     val newList = masterNode.getCloudletReceivedList[NewCloudlet]
