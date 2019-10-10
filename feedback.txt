@@ -1,0 +1,12 @@
+Hi Giorgia,
+
+Your HW1 is graded.
+
+You have extended the various objects of cloudsim really well to demonstrate mapper,reducers and general tasks.
+You have also very well tested important methods of your simulation using flatspec.
+
+Your total grade is 7% + 1.5% = 8.5%.
+
+Thank you,
+Mohammed Siddiq
+
