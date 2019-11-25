@@ -1,5 +1,6 @@
-# CS441 - Engineering of Distributed Objects for Cloud Computing: homework 1
-### Giorgia Fiscaletti, UIN: 669755907
+# Cloud Simulator
+### CS441 - Engineering of Distributed Objects for Cloud Computing: homework 1
+#### Giorgia Fiscaletti, University of Illinois at Chicago
 
 ## Introduction
 
